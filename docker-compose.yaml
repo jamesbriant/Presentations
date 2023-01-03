@@ -1,0 +1,10 @@
+version: '3'
+
+services: 
+    revealjs:
+        build: .
+        volumes: 
+            - "./presentations:/reveal.js/presentations"
+        ports: 
+            - "80:8000"
+            - "35729:35729"

@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>UCL-UM</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/night.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="images/ucl-banner-large-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide">
+                    <section data-auto-animate>
+                        <h1 class="r-fit-text">UCL-UM Update</h1>
+                        <p>25th August 2022</h5>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h1 class="r-fit-text">UCL-UM Update</h1>
+                        <ol>
+                            <li>EOS Aura MLS Data</li>
+							<li>History matching</li>
+							<li>Simulation Runs</li>
+                        </ol>
+                    </section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide-in none-out">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">1. EOS Aura MLS Data</h2>                        
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">1. EOS Aura MLS Data</h2>
+                        <p>We have the data.</p>
+                        <p class="fragment">It includes temperature data (not winds).</p>  
+                        <p class="fragment">Data starts in August 2004. No use for 2004 UM simulations!!</p>           
+                    </section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide-in none-out">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">2. UM Simulations</h2>                        
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">2. UM Simulations</h2>
+                        <p>Still not running without errors.</p>
+                        <p class="fragment">Very close to success.</p> 
+						
+						<aside class="notes">
+							Set up all running successfully.
+							All required files are accessible.
+						</aside>
+                    </section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.1 History Matching</h2>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.1 History Matching</h2>
+                        <p>Which variable to focus on first?</p>
+                        <div class="fragment">
+                            \[\begin{aligned}
+                                &amp; T_{nudged} = \alpha_{NP} T_{profile} + (1 - \alpha_{NP}) T_{dynamic} \\
+                                &amp; \text{where} \quad \alpha_{NP} = \frac{k \Delta t}{\tau}
+                            \end{aligned} \]
+                        </div>
+                        <p class="fragment"><span data-markdown>`$$ k \text{  or  } \tau $$`</span></p>
+                    </section>
+                </section>
+
+                <section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.2 History Matching</h2>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.2 History Matching</h2>
+                        <p>Naive approach - Try applying history matching method to each location. Hope for similar results from each.</p>
+                        <p class="fragment">Initial concern arrises from similar longitudes between each location.</p>
+                    </section>
+
+                    <section data-auto-animate>
+                        <img src="images/radar-locations.png">
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.2 History Matching</h2>
+                        <p>If history matching output from each radar location is different, model discrepancy is required.</p>
+                        <p class="fragment"><em>Brynjarsdottir & O'Hagan - Learning about physical parameters: the importance of model discrepancy https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007/pdf</em></p>
+                    </section>
+				</section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.3 History Matching</h2>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">3.3 History Matching</h2>
+                        <p>We require a metric with which to perform the history matching:</p>
+                        <ul>
+                            <li class="fragment">Daily maximum wind speed</li>
+                            <li class="fragment">Average wind speed over 24hours (zonal, meridional or magnitude)</li>
+                            <li class="fragment">Daily tidal amplitude (which period?)</li>
+                            <li class="fragment">Daily tidal phase (which period?)</li>
+                        </ul>
+						 
+						<aside class="notes">
+							Remember MLS data is TEMPERATURE only.
+						</aside>
+                    </section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide-in none-out">
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">4. FabSim3</h2>                        
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2 class="r-fit-text">4. FabSim3</h2>
+                        <p>Tool for launching computer models with different parameters.</p>
+                        <p class="fragment">Need code that can change UM settings.</p>
+						<p class="fragment">FabSim3 may struggle with Monsoon's key fob.</p> 
+						<p class="fragment">Dan Giles offered help with FabSim3.</p>
+						
+						<aside class="notes">
+
+						</aside>
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'c/t',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>

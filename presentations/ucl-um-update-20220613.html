@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>UCL-UM</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/night.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="images/ucl-banner-large-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide">
+                    <section data-auto-animate>
+                        <h1 class="r-fit-text">UCL-UM Update</h1>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h1 class="r-fit-text" style="font-size: 80%;">UCL-UM Update</h1>
+                        <ol>
+                            <li>ExUM and Radar data trends</li>
+							<li>Tidal analysis</li>
+							<li>Next steps</li>
+                        </ol>
+                    </section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="slide-in none-out">
+                    <h2 class="r-fit-text">1. Data Trends</h2>
+                </section>
+
+				<section data-auto-animate data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+					<section data-auto-animate>
+						<h2>Data</h2>
+						<div class="r-hstack">
+							<div style="padding: 0 10%"><h3>ExUM</h3>
+								<p class="fragment" data-fragment-index="3">3-hourly</p>
+								<ul class="fragment" data-fragment-index="1">
+									<li>1D-CIRA</li>
+									<li>3D-CIRA</li>
+									<li>DTM</li>
+								</ul>
+							</div>
+							<div style="padding: 0 10%"><h3>Radar</h3>
+								<p class="fragment" data-fragment-index="3">hourly</p>
+								<ul class="fragment" data-fragment-index="2">
+									<li>Ascension</li>
+									<li>Esrange</li>
+									<li>Rothera</li>
+								</ul>
+							</div>
+						<div>
+					</section>
+
+					<section data-auto-animate>
+						<h2>Data</h2>
+						<div class="r-hstack">
+							<div style="padding: 0 10%"><h3>ExUM</h3>
+								<p>3-hourly</p>
+								<ul>
+									<li style="color: green">1D-CIRA</li>
+									<li style="color: red">3D-CIRA</li>
+									<li style="color: orange">DTM</li>
+								</ul>
+							</div>
+							<div style="padding: 0 10%"><h3>Radar</h3>
+								<p>hourly</p>
+								<ul>
+									<li style="color: orange">Ascension</li>
+									<li style="color: green">Esrange</li>
+									<li style="color: red">Rothera</li>
+								</ul>
+							</div>
+						<div>
+						<aside class="notes">
+							Radar available in 82-98km, ExUM data restricted to this region too.
+						</aside>
+					</section>
+				</section>
+
+                <section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <div class="r-stack">
+						<img class="fragment fade-out" data-fragment-index="0" src="images/x_wind_200401_esrange_1d-cira_3d-cira_dtm.png">
+						<img class="fragment current-visible" data-fragment-index="0" src="images/annual-x-winds-2004-1d-cira-esrange.png">
+					</div>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <h2 class="r-fit-text">2. Tidal Analysis</h2>
+                </section>
+
+                <section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+					<h2>Composite Days</h2>
+					<p>Following the work of <em>Matthew J. Griffith et al. (2021)</em> we create a sequence of 4-day composite days.</p>
+					<p class="fragment">Defined at discrete altitudes in 82-98km.</p>
+					<p class="fragment">For radar data <strong>only</strong>.</p>
+				</section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <h2>Model</h2>
+					\[\begin{aligned}
+					y_i = A_0 &amp; + A_1 \sin(2 t_i\pi/24 + \omega_1) \\
+					&amp; + A_2 \sin(2 t_i\pi/12 + \omega_2) \\
+					&amp; + A_3 \sin(2 t_i\pi/8 + \omega_3) \\
+					&amp; + A_4 \sin(2 t_i\pi/6 + \omega_4) + \epsilon_i
+					\end{aligned} \]
+					<div class="r-hstack fragment">
+						<div style="padding: 0 7%;">ExUM</div>
+						<div style="padding: 0 7%;">Radar</div>
+						<div style="padding: 0 7%;">4-day Composites</div>
+					</div>
+					<aside class="notes">
+						ExUM can't be fitted, 8 data points and 9 variables. I chose to extend the data by a few days, parameter uncertainty is therefore not realistic, but parameter estimates seemed robust.
+					</aside>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+					<div class="r-stack">
+						<img class="fragment fade-out" data-fragment-index="0" src="images/tidal-amplitude-x-wind-12hr-1d-cira-2004-esrange.png">
+						<img class="fragment current-visible" data-fragment-index="0" src="images/tidal-phase-x-wind-12hr-1d-cira-2004-esrange.png">
+						<p class="fragment current-visible" data-fragment-index="1">
+							"The shaded regions denote the standard deviation from the curve-fitting algorithm, and the black bars indicate the standard deviation from the mean of the measured amplitudes across the month."
+						</p>
+						<img class="fragment" data-fragment-index="2" src="images/angeo-39-487-2021-f08.png">
+					</div>
+					<aside class="notes">
+						Dubious about the error bars, they seem centred on the regression mean? This cannot be right...
+					</aside>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <h2 class="r-fit-text">3. Next Steps</h2>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <h2>More Data</h2>
+					<ul>
+						<li class="fragment">
+							More plots requires more simulation data from other years. We have the radar data!
+						</li>
+						<li class="fragment">
+							Improved regression parameter estimates needs more UM output points. eg hourly output.
+						</li>
+					</ul>
+                </section>
+
+				<section data-auto-animate data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section data-auto-animate>
+						<h2>1D-CIRA</h2>
+						\[\begin{aligned}
+							&amp; T_{nudged} = \alpha_{NP} T_{profile} + (1 - \alpha_{NP}) T_{dynamic} \\
+							&amp; \text{where} \quad \alpha_{NP} = \frac{k \Delta t}{\tau}
+						\end{aligned} \]
+						<p data-markdown class="fragment">
+							- `$\tau$` chosen to be 24hours in keeping with Song et al. (2018)
+							- `$k \in [0,1]$` is a 'nudging ramp parameter'.
+						</p>
+						<aside class="notes">
+							"They found that between 8, 24 and 40 h timescales, the 24 h gave the most reasonable model fields and conservation properties out of the three options". 
+							Information from Song et al. (2018)
+						</aside>
+					</section>
+
+					<section data-auto-animate>
+						<h2>1D-CIRA</h2>
+						<p data-markdown>
+							`$T_{profile}$` is based on climatological and satellite data:
+						</p>
+						<p data-markdown class="r-fit-text">
+							- 70-86 km is based on the US Standard Atmosphere (USSA) (COESA, 1976).
+							- 86-119.7 km is based on the Committee on Space Research (COSPAR) International Reference Atmosphere (CIRA)
+							- 119.7+ km the temperature asymptotes to a selected exobase temperature (here 1000 K).
+						</p>
+						<aside class="notes">
+							"They found that between 8, 24 and 40 h timescales, the 24 h gave the most reasonable model fields and conservation properties out of the three options". 
+							Information from Song et al. (2018)
+						</aside>
+					</section>
+
+					<section data-background-color="white">
+						<img src="images/swsc190075-eq23.gif">
+					</section>
+                </section>
+
+				<section data-auto-animate data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section data-auto-animate>
+						<h2>3D-CIRA</h2>
+						\[\begin{aligned}
+							T_m(m, \varphi) &amp; = T' + T_a \cos(|m - 6|\pi/6)\cos(\pi/2 + \varphi) \\
+							z_m(m, \varphi) &amp; = z' + z_a \cos(|m - 6|\pi/6)\cos(\pi/2 + \varphi)
+						\end{aligned} \]
+						<p data-markdown class="fragment">
+							`$m$` = month, `$\varphi$` = latitude `$\newline$`
+							`$T' = 178.4482K$`, `$T_a = 25.73031K$` `$\newline$`
+							`$z' = 94.066km$`, `$z_a = 4.561km$`
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h2>3D-CIRA</h2>
+						\[
+							T(m, \varphi, z) = T_m(m, \varphi)\Gamma(z - z_m(m, \varphi))^a
+						\]
+						<p data-markdown class="fragment">
+							`$\Gamma = 4.025643\times10^{-6} Kkm^{-1} \newline$`
+							`$a = 2.414574$`
+						</p>
+					</section>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <h2>DTM</h2>
+					<p>
+						This model is much more complex. Split into 2 parts: 120-170km and 170-200km
+					</p>
+					<p>
+						It involves polynomial (only quadratic?) fitting to the amplitudes from DTM output.
+					</p>
+                </section>
+
+				<section data-background-image="images/ucl-banner-small-white.png" data-background-size="contain" data-background-position="top" data-background-transition="none">
+                    <section>
+						<h2>Eddy Diffusion</h2>
+						<p data-markdown>
+							`$K_{zz}$` drives eddy diffusion and is defined analytically.
+						</p>
+						<p>
+							It is inferred from SABER atomic oxygen measurements using a similar method to the tidal analysis seen earlier.
+						</p>
+						<p data-markdown>
+							[RD-25] says `$K_{zz}$` varies with the solar cycle. 
+						</p>
+					</section>
+					<section>
+						<img class="r-stretch" src="images/SWAMI-Kzz.png">
+					</section>
+                </section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'c/t',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
